@@ -1,0 +1,22 @@
+Configure Trunks
+Configure trunking on S1 and use VLAN 99 as the native VLAN
+switch 1 
+enable 
+config t
+int range g0/1 - 2 
+switchport mode trunk 
+switchport trunk native vlan 99
+
+ou configured VLAN 99 as the native VLAN on S1. However, S2 and S3 are using VLAN 1 as the default native VLAN as indicated by the syslog message
+
+switch 2 
+enable 
+config t
+int g0/1
+switchport trunk native vlan 99
+
+switch 3 
+enable
+config t
+int g0/2
+switchport trunk native vlan 99
